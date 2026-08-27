@@ -1,0 +1,45 @@
+{
+  "generatedAt": "2026-08-27T10:14:56.680Z",
+  "books": [
+    {
+      "title": "D04 The Nitrogen Whisperers 83135 Published Removed Copyrights(MILA)",
+      "slug": "d04-the-nitrogen-whisperers-83135-published-removed-copyrights-mila",
+      "file": "books/D04_The Nitrogen Whisperers-83135_Published_Removed_Copyrights(MILA).epub",
+      "format": "EPUB",
+      "status": "published",
+      "order": 1
+    },
+    {
+      "title": "D04 The Secret of the Seeds 29973 Removed Copyrights(MNEMONIC I)",
+      "slug": "d04-the-secret-of-the-seeds-29973-removed-copyrights-mnemonic-i",
+      "file": "books/D04_The Secret of the Seeds-29973_Removed_Copyrights(MNEMONIC-I).epub",
+      "format": "EPUB",
+      "status": "published",
+      "order": 2
+    },
+    {
+      "title": "D08 Template Added kids template3 The Modifiers Describe Other Words In A Sentence 6855 Removed Copyrights(FINAL)",
+      "slug": "d08-template-added-kids-template3-the-modifiers-describe-other-words-in-a-sentence-6855-removed-copyrights-final",
+      "file": "books/D08_Template_Added_kids-template3_The Modifiers-Describe-Other-Words-In-A-Sentence-6855_Removed_Copyrights(FINAL).epub",
+      "format": "EPUB",
+      "status": "published",
+      "order": 3
+    },
+    {
+      "title": "D09 Birdie's Botany Lesson 5522 FINAL Removed Copyrights(FINAL)",
+      "slug": "d09-birdie-s-botany-lesson-5522-final-removed-copyrights-final",
+      "file": "books/D09_Birdie's Botany Lesson-5522_FINAL_Removed_Copyrights(FINAL).epub",
+      "format": "EPUB",
+      "status": "published",
+      "order": 4
+    },
+    {
+      "title": "D10 Template Added kids template3 Article 1 Archetype Unity quest Conflict Identity confusion Setting Inter state camp The Quest for Bharat's Heart PUBLISHED Removed Copyrights(FINAL)",
+      "slug": "d10-template-added-kids-template3-article-1-archetype-unity-quest-conflict-identity-confusion-setting-inter-state-camp-the-quest-for-bharat-s-heart-published-removed-copyrights-final",
+      "file": "books/D10_Template_Added_kids-template3_Article_1_Archetype-Unity_quest_Conflict-Identity_confusion_Setting-Inter-state_camp_The_Quest_for_Bharat's_Heart_PUBLISHED_Removed_Copyrights(FINAL).epub",
+      "format": "EPUB",
+      "status": "published",
+      "order": 5
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "type": "ebook-category",
+  "title": "CBSE",
+  "slug": "cbse",
+  "badge": "CURRICULUM",
+  "icon": "🎓",
+  "logo": "",
+  "description": "Interactive CBSE curriculum storybooks and concept learning.",
+  "status": "published",
+  "order": 3
+}
