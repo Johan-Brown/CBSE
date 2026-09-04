@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-03T06:53:00.574Z",
+  "generatedAt": "2026-09-04T06:39:49.056Z",
   "books": [
     {
       "title": "D04 The Nitrogen Whisperers 83135 Published Removed Copyrights(MILA)",
@@ -16,7 +16,8 @@
       "file": "books/D04_The Secret of the Seeds-29973_Removed_Copyrights(MNEMONIC-I).epub",
       "format": "EPUB",
       "status": "published",
-      "order": 2
+      "order": 2,
+      "cover": "covers/d04-the-secret-of-the-seeds-29973-removed-copyrights-mnemonic-i.jpg"
     },
     {
       "title": "D08 Template Added kids template3 The Modifiers Describe Other Words In A Sentence 6855 Removed Copyrights(FINAL)",
@@ -24,8 +25,7 @@
       "file": "books/D08_Template_Added_kids-template3_The Modifiers-Describe-Other-Words-In-A-Sentence-6855_Removed_Copyrights(FINAL).epub",
       "format": "EPUB",
       "status": "published",
-      "order": 3,
-      "cover": "covers/d08-template-added-kids-template3-the-modifiers-describe-other-words-in-a-sentence-6855-removed-copyrights-final.png"
+      "order": 3
     },
     {
       "title": "D09 Birdie's Botany Lesson 5522 FINAL Removed Copyrights(FINAL)",
