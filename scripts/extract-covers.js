@@ -20,13 +20,13 @@
 
 'use strict';
 
-const fs   = require('fs');
+const fs = require('fs');
 const path = require('path');
 const { execSync, execFileSync } = require('child_process');
 
-const root         = path.resolve(__dirname, '..');
-const booksDir     = path.join(root, 'books');
-const coversDir    = path.join(root, 'covers');
+const root = path.resolve(__dirname, '..');
+const booksDir = path.join(root, 'books');
+const coversDir = path.join(root, 'covers');
 const booksJsonPath = path.join(root, 'books.json');
 
 // ── Ensure covers/ directory exists ───────────────────────────
@@ -44,8 +44,8 @@ function isPopplerPdftoppm() {
   } catch { return false; }
 }
 const HAS_PDFTOPPM_POPPLER = commandExists('pdftoppm') && isPopplerPdftoppm();
-const HAS_GS               = commandExists('gs');
-const HAS_CONVERT          = commandExists('convert');
+const HAS_GS = commandExists('gs');
+const HAS_CONVERT = commandExists('convert');
 
 console.log(`PDF tools: pdftoppm(poppler)=${HAS_PDFTOPPM_POPPLER} ghostscript=${HAS_GS} imagemagick=${HAS_CONVERT}\n`);
 
@@ -68,6 +68,7 @@ function slugify(name) {
  * Returns the saved cover path (relative to repo root) or null.
  */
 function extractCoverFromPdf(pdfPath, slug) {
+  console.log(slug);
   const outJpg = path.join(coversDir, `${slug}.jpg`);
 
   // ── Strategy 1: pdftoppm (Poppler build only) ───────────────
@@ -159,16 +160,16 @@ function findCoverInOPF(zip) {
     const containerXml = containerEntry.getData().toString('utf8');
     const opfMatch = containerXml.match(/full-path="([^"]+\.opf)"/i);
     if (!opfMatch) return null;
-    const opfPath  = opfMatch[1];
+    const opfPath = opfMatch[1];
     const opfEntry = zip.getEntry(opfPath);
     if (!opfEntry) return null;
     const opfXml = opfEntry.getData().toString('utf8');
     const opfDir = path.dirname(opfPath);
-    let imgPath  = null;
+    let imgPath = null;
 
     // 1. Explicit id="cover" or id="cover-image" (Prioritized)
     const explicitMatch = opfXml.match(/<item[^>]+id=["'](?:cover|cover-image)["'][^>]+href=["']([^"']+)["']/i)
-                       || opfXml.match(/<item[^>]+href=["']([^"']+)["'][^>]+id=["'](?:cover|cover-image)["']/i);
+      || opfXml.match(/<item[^>]+href=["']([^"']+)["'][^>]+id=["'](?:cover|cover-image)["']/i);
     if (explicitMatch) {
       imgPath = explicitMatch[1];
     }
@@ -176,7 +177,7 @@ function findCoverInOPF(zip) {
     // 2. EPUB3 properties="cover-image"
     if (!imgPath) {
       const ep3match = opfXml.match(/<item[^>]+properties=["']cover-image["'][^>]+href=["']([^"']+)["']/i)
-                    || opfXml.match(/<item[^>]+href=["']([^"']+)["'][^>]+properties=["']cover-image["']/i);
+        || opfXml.match(/<item[^>]+href=["']([^"']+)["'][^>]+properties=["']cover-image["']/i);
       if (ep3match) imgPath = ep3match[1];
     }
 
@@ -186,7 +187,7 @@ function findCoverInOPF(zip) {
       if (metaMatch) {
         const coverId = metaMatch[1];
         const itemMatch = opfXml.match(new RegExp(`<item[^>]+id=["']${coverId}["'][^>]+href=["']([^"']+)["']`, 'i'))
-                       || opfXml.match(new RegExp(`<item[^>]+href=["']([^"']+)["'][^>]+id=["']${coverId}["']`, 'i'));
+          || opfXml.match(new RegExp(`<item[^>]+href=["']([^"']+)["'][^>]+id=["']${coverId}["']`, 'i'));
         if (itemMatch) imgPath = itemMatch[1];
       }
     }
@@ -233,7 +234,7 @@ function extractCoverFromEpub(epubPath, slug) {
     const entry = zip.getEntry(coverPath);
     if (!entry) { console.warn(`  ⚠ Cover entry missing: ${coverPath}`); return null; }
 
-    const ext    = path.extname(coverPath).toLowerCase() || '.jpg';
+    const ext = path.extname(coverPath).toLowerCase() || '.jpg';
     const outFile = path.join(coversDir, `${slug}${ext}`);
     fs.writeFileSync(outFile, entry.getData());
     console.log(`  ✓ EPUB cover: covers/${slug}${ext}`);
@@ -249,13 +250,13 @@ function extractCoverFromEpub(epubPath, slug) {
 // ══════════════════════════════════════════════════════════════
 
 const booksData = JSON.parse(fs.readFileSync(booksJsonPath, 'utf8'));
-const books     = Array.isArray(booksData) ? booksData : (booksData.books || []);
+const books = Array.isArray(booksData) ? booksData : (booksData.books || []);
 
 let updated = 0;
 
 for (const book of books) {
   const bookPath = path.join(root, book.file);
-  const ext      = path.extname(book.file).toLowerCase();
+  const ext = path.extname(book.file).toLowerCase();
 
   // Skip if cover already exists and file is present on disk
   if (book.cover && fs.existsSync(path.join(root, book.cover))) {
@@ -290,7 +291,7 @@ for (const book of books) {
 if (Array.isArray(booksData)) {
   fs.writeFileSync(booksJsonPath, JSON.stringify(books, null, 2) + '\n');
 } else {
-  booksData.books     = books;
+  booksData.books = books;
   booksData.generatedAt = new Date().toISOString();
   fs.writeFileSync(booksJsonPath, JSON.stringify(booksData, null, 2) + '\n');
 }
